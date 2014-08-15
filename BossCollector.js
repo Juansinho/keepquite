@@ -167,7 +167,8 @@ function handleSuccessCheckBoss(msg) {
 // console.info(msg);
  var name=$(msg).find('.boss_name').text();
  var id=  $(msg).find('.boss_operation').attr('id');
- jca_boss_id = id;
+ jca_boss_tmp = id.split('_');
+ jca_boss_id = jca_boss_tmp[1];
  log2div('Boss found. Name: '+name+' (ID: '+id+')');
  StartClicking();
 
