@@ -86,7 +86,7 @@ var the_div = document.getElementById('quest');
 		the_area2.id='juan_boss';	   		
 		the_area2.style.paddingLeft='10px';
 	   $(the_area).insertAfter(the_div);
-	   $(the_restart_button).insertAfter(the_area);
+
 	   $(the_kick_button).insertAfter(the_area);
 	   $(the_start_button).insertAfter(the_area);
 	   $(the_area2).insertAfter(the_area);
@@ -98,7 +98,7 @@ var the_div = document.getElementById('quest');
 		the_area.innerHTML=jca_title+' (v0.2 Beta)'
 		
 			+'<table><tr><th>Put in the FB-IDs you want to remove. Each one in one line.</th></tr>'
-			+'<tr><td><textarea id="jca_fam_animate" rows="10" cols="10"></textarea></td></tr>'
+			+'<tr><td><textarea id="jca_fbids" rows="10" cols="10"></textarea></td></tr>'
 			+'</table>';
    }
    else{
@@ -113,28 +113,15 @@ function handleSuccess(msg) {
 		 if (data.msg) log2div(out);
 		 if (fc2_globalCounter == 0){
 			log2div('Everything is done :)');
-			if ($('#jca_fam_animate').attr('checked')){ 
-			clearInterval(rot_interval);
-			 rotate(0);
-			 }
-			$('#juansinho_restart_btn').show();
 		 } 	 
 }
 
-function handleSuccessAll(msg) {
- data = jQuery.parseJSON(msg);
- out = data.msg;
-	fc2_globalCounter = fc2_globalCounter-1;
-		 if (data.msg) log2div(out);
-		 if (fc2_globalCounter == 0){
-			log2div('Everything is done :)');
-		 } 	 
-}
 function handleError(){log2div("Something went wrong");}	
+
 function StartClicking(){         
-	 typ=($('input[name="jca_fam_collect"]:checked').val());
-	if (typ != 1 && typ != 2 && typ != 3 && typ != 4 && typ != 5){
-	  alert('Please select what to collect.');
+	 typ=();
+	if ($('textarea[name="jca_fbids"]:checked').val() == ""){
+	  alert('Ok, that was easy. No IDs means no work for me.');
 	  return false;
 	}
 	 var which2collect = new Array('',"exp_job", "exp_arena_damage", "exp_fight", "exp_craft", "exp_social");        
@@ -152,19 +139,6 @@ function StartClicking(){
     }
 }
 
-function ClickEmAll(){         
-
-	 var which2collect = new Array('',"exp_job", "exp_arena_damage", "exp_fight", "exp_craft", "exp_social");        
-	 for(var j=1;j<=5;j++){
-     var url = 'html_server.php?xw_controller=clan&xw_action=collectProgress&xw_city=1&xw_person='+userid.substr(2)+'&exp_type='+which2collect[j];
-      log2div('Sending 10 requests ('+which2collect[j]+')...');
-	 for(var i=1;i<=10;i++){
-		 request(url,handleSuccessAll,handleError);	 		 
-		 fc2_globalCounter++;		 
-	 }
-	log2div('Sent 10 requests ('+which2collect[j]+')...');	 
-	}
-}
 function unix_timestamp() {
 		return parseInt(new Date().getTime().toString().substring(0, 10))
 	}   
