@@ -111,6 +111,25 @@ function handleSuccess(msg) {
 
 function handleError(){log2div("Something went wrong");}	
 
+function RemoveFromMafia(id){
+	var url = 'html_server.php?xw_controller=stats&xw_action=view&xw_city=1&user='+id;
+        request(url,function(msg){
+                                        var link=$(msg).find('.zy_popup_box_body_dark').find('a:contains("Remove")').attr('href');
+                                        if (link) {
+                                                link=link.replace(preurl,'');
+                                                request(link,function(msg){
+                                                        if (msg.indexOf('is no longer in your mafia')!=-1) {
+                                                                        log2div(id+' removed...');
+																		StartClicking();
+                                                        }
+                                                        else{
+                                                               log2div('Failed to remove '+id+'...');
+															   StartClicking()
+                                                        }
+                                                },function(){alert("Something went wrong");StartClicking()});
+                                        }
+                });
+}
 function StartClicking(){         
 	if ($('#jca_fbids').val() == ""){
 	  log2div('work done...');
@@ -122,8 +141,9 @@ function StartClicking(){
 	 
      var url = 'html_server.php?xw_controller=stats&xw_action=view&xw_city=1&user='+fbid;
       log2div('Removing '+fbid+'...');
-	  request(url,handleSuccess,handleError);	 
-	 $('#jca_fbids').val(which2remove.join("\n"))	  
+	  //request(url,handleSuccess,handleError);	 
+	  RemoveFromMafia(fbid);
+	 $('#jca_fbids').val(which2remove.join("\n"));	  
   }
 }
 //Thanks to Spockholm for this :)
