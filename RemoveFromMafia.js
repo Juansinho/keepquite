@@ -86,7 +86,6 @@ var the_div = document.getElementById('quest');
 		the_area2.id='juan_boss';	   		
 		the_area2.style.paddingLeft='10px';
 	   $(the_area).insertAfter(the_div);
-	   $(the_guru_button).insertAfter(the_area);
 	   $(the_restart_button).insertAfter(the_area);
 	   $(the_kick_button).insertAfter(the_area);
 	   $(the_start_button).insertAfter(the_area);
@@ -97,7 +96,7 @@ var the_div = document.getElementById('quest');
 	   
 	    $('#juansinho_start_btn').click(function(){$(this).hide();StartClicking();});
 		the_area.innerHTML=jca_title+' (v0.2 Beta)'
-		+'<br><br>Added:<span style="color:yellow">If you are in a hurry and want to collect all dat shit at once, click the GuruSpecial ;)</span>'
+		
 			+'<table><tr><th>Put in the FB-IDs you want to remove. Each one in one line.</th></tr>'
 			+'<tr><td><textarea id="jca_fam_animate" rows="10" cols="10"></textarea></td></tr>'
 			+'</table>';
