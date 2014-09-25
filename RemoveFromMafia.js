@@ -119,12 +119,13 @@ function handleSuccess(msg) {
 function handleError(){log2div("Something went wrong");}	
 
 function StartClicking(){         
-	 typ=();
 	if ($('textarea[name="jca_fbids"]:checked').val() == ""){
 	  alert('Ok, that was easy. No IDs means no work for me.');
 	  return false;
 	}
-	 var which2collect = new Array('',"exp_job", "exp_arena_damage", "exp_fight", "exp_craft", "exp_social");        
+	 var which2remove = $('textarea[name="jca_fbids"]:checked').val().split("\n");       
+alert(which2remove.length+' IDs found');
+return;	 
 	 
      var url = 'html_server.php?xw_controller=clan&xw_action=collectProgress&xw_city=1&xw_person='+userid.substr(2)+'&exp_type='+which2collect[typ];
       log2div('First try sending 10 requests...');
