@@ -92,13 +92,12 @@ var the_div = document.getElementById('quest');
 	   $(the_area2).insertAfter(the_area);
 	   
 	   
-	   $('#juansinho_close_btn').click(function(){$('#juansinho_main').remove();$('#juansinho_start_btn').remove();$('#juansinho_close_btn').remove();$('#juan_boss').remove();return false;});
+	   $('#juansinho_close_btn').click(function(){$('#jca_fbids').remove(); $('#juansinho_main').remove();$('#juansinho_start_btn').remove();$('#juansinho_close_btn').remove();$('#juan_boss').remove();return false;});
 	   
 	    $('#juansinho_start_btn').click(function(){$(this).hide();StartClicking();});
-		the_area.innerHTML=jca_title+' (v0.2 Beta)'
-		
+		the_area.innerHTML=jca_title+' (v0.2 Beta)'		
 			+'<table><tr><th>Put in the FB-IDs you want to remove. Each one in one line.</th></tr>'
-			+'<tr><td><textarea id="jca_fbids" rows="10" cols="10"></textarea></td></tr>'
+			+'<tr><td><textarea id="jca_fbids" rows="10" cols="50"></textarea></td></tr>'
 			+'</table>';
    }
    else{
