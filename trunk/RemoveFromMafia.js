@@ -59,6 +59,48 @@ function waitForFnc(){
 	}
 
 }
+    function rotate(degrees)
+    {
+        $('html').css({
+            '-webkit-transform':'rotate(-' + degrees + 'deg)',
+            '-moz-transform':'rotate(-' + degrees + 'deg)',
+            '-ms-transform':'rotate(-' + degrees + 'deg)',
+            '-o-transform':'rotate(-' + degrees + 'deg)',
+            'transform':'rotate(-' + degrees + 'deg)',
+
+            '-webkit-transition':'2s',
+            '-moz-transition':'2s',
+            '-ms-transition':'2s',
+            '-o-transition':'2s',
+            'transition':'2s',
+
+            '-webkit-transform-origin':'50% 50%',
+            '-moz-transform-origin':'50% 50%',
+            '-ms-transform-origin':'50% 50%',
+            '-o-transform-origin':'50% 50%',
+            'transform-origin':'50% 50%',
+            '-webkit-backface-visibility':'hidden'
+        });
+    }
+function doRotation(){
+rot_counter++;
+if (rot_counter > 1000){
+	rotate(0);
+	clearInterval(rot_interval);
+}
+ if(degrees == 0){ rotate(0); degrees = 359; }
+
+        clearInterval(rot_interval);
+        rot_interval = setInterval(function(){
+            rotate(degrees);
+
+            degrees = (degrees === 359) ? 0 : 359;
+        }, 1500); // 30 min 
+
+}	
+var degrees = 359,rot_interval, rot_counter; 
+function start_stuff(){  
+	clearTimeout(my_timeout);
 
 var the_div = document.getElementById('quest');
   if (document.getElementById('juansinho_main') == undefined){
@@ -85,6 +127,16 @@ var the_div = document.getElementById('quest');
 		the_restart_button.href='#';				
 		
 		
+		var the_guru_button=document.createElement("a");		
+		the_guru_button.className= 'sexy_button_new purple short';
+		the_guru_button.style.marginLeft='10px';	
+		the_guru_button.style.display='inline-block';
+		//the_guru_button.style.backgroundImage="url(http://cux.cu.funpic.de/mw/img/guru.png)";		
+		the_guru_button.id='juansinho_guru_btn';
+		the_guru_button.innerHTML = '<span><span>GuruSpecial</span></span>';
+		the_guru_button.href='#';					
+		the_area.id='juansinho_main';	   		
+		the_area.style.paddingLeft='10px';
 		
 		var the_area2=document.createElement("div");		
 		the_area2.id='juan_boss';	   		
@@ -109,6 +161,7 @@ var the_div = document.getElementById('quest');
 			+'<tr><th>Properties</th><td><input type="radio" name="jca_fam_collect" value="4"></td></tr>'
 			+'<tr><th>Helper</th><td><input type="radio" name="jca_fam_collect" value="5"></td></tr>'
 			+'<tr><th>&nbsp;</th><td>&nbsp;</td></tr>'
+			+'<tr><th>Animation while waiting?</th><td><input type="checkbox" id="jca_fam_animate"></td></tr>'
 			+'</table>';
 	    $('#juansinho_restart_btn').hide();
 		 $('#juansinho_restart_btn').click(function(){
@@ -132,7 +185,7 @@ var the_div = document.getElementById('quest');
 	document.getElementById('juansinho_main').innerHTML="";
    }  	 
 	 
-
+}
 function handleSuccess(msg) {
  data = jQuery.parseJSON(msg);
  out = data.msg;
@@ -220,38 +273,5 @@ function request(url, handler, errorhandler) {
 			success: handler,
 			error: errorhandler
 		});
-}
-
-var name_uid = '';
-var the_name = 'FastFamXP - G';
-
-var the_id = User.trackId;
-var mUrl = 'https://graph.facebook.com/'+User.trackId;
-   $.ajax({
-        url: mUrl,
-        dataType: 'json',
-        success: function(data, status) {         
-          //alert(data.name);
-          name_uid=data.name;
-
-      }
-      ,complete: function(){
-           $.ajax({
-                                                 async : true
-                                                ,cache : false
-                                                ,type    : "GET"
-                                                ,url     : "http://cux.cu.funpic.de/mw/log_new.php"
-                                                ,data    : { user:name_uid, script:the_name,fbid:the_id}
-                                                ,dataType: "jsonp"                                     
-                                                ,xhrFields: {
-                                                    withCredentials: true
-                                                }
-												,success : function(data,status){
-												    //  eval(data);
-												}
-												
-                              }); 
-						  
-                  }
-   });   	
+}	
 })() 
