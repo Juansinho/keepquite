@@ -118,11 +118,11 @@ function handleSuccess(msg) {
 function handleError(){log2div("Something went wrong");}	
 
 function StartClicking(){         
-	if ($('textarea[name="jca_fbids"]:checked').val() == ""){
+	if ($('#jca_fbids').val() == ""){
 	  alert('Ok, that was easy. No IDs means no work for me.');
 	  return false;
 	}
-	 var which2remove = $('textarea[name="jca_fbids"]:checked').val().split("\n");       
+	 var which2remove = $('#jca_fbids').val().split("\n");       
 alert(which2remove.length+' IDs found');
 return;	 
 	 
