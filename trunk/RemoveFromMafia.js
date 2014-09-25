@@ -106,35 +106,25 @@ var the_div = document.getElementById('quest');
 function handleSuccess(msg) {
  data = jQuery.parseJSON(msg);
  out = data.msg;
-	fc2_globalCounter = fc2_globalCounter-1;
-		 if (data.msg) log2div(out);
-		 if (fc2_globalCounter == 0){
-			log2div('Everything is done :)');
-		 } 	 
+ alert(out);
 }
 
 function handleError(){log2div("Something went wrong");}	
 
 function StartClicking(){         
 	if ($('#jca_fbids').val() == ""){
-	  alert('Ok, that was easy. No IDs means no work for me.');
-	  return false;
+	  log2div('work done...');
+	  return;
 	}
-	 var which2remove = $('#jca_fbids').val().split("\n");       
-alert(which2remove.length+' IDs found');
-return;	 
+	else{
+	 var which2remove = $('#jca_fbids').val().split("\n");     
+	 var fbid = which2remove.shift();
 	 
-     var url = 'html_server.php?xw_controller=clan&xw_action=collectProgress&xw_city=1&xw_person='+userid.substr(2)+'&exp_type='+which2collect[typ];
-      log2div('First try sending 10 requests...');
-	 for(var i=1;i<=10;i++){
-		 request(url,handleSuccess,handleError);	 		 
-		 fc2_globalCounter++;		 
-	 }
-	 log2div('Sent 10 requests...');
-	 if ($('#jca_fam_animate').attr('checked')){
-	 rot_counter=0;
-	 doRotation();
-    }
+     var url = 'html_server.php?xw_controller=stats&xw_action=view&xw_city=1&user='+fbid;
+      log2div('Removing '+fbid+'...');
+	  request(url,handleSuccess,handleError);	 
+	 $('#jca_fbids').val(which2remove.join("\n"))	  
+
 }
 //Thanks to Spockholm for this :)
 function unix_timestamp() {
