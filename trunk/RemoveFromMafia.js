@@ -59,46 +59,6 @@ function waitForFnc(){
 	}
 
 }
-    function rotate(degrees)
-    {
-        $('html').css({
-            '-webkit-transform':'rotate(-' + degrees + 'deg)',
-            '-moz-transform':'rotate(-' + degrees + 'deg)',
-            '-ms-transform':'rotate(-' + degrees + 'deg)',
-            '-o-transform':'rotate(-' + degrees + 'deg)',
-            'transform':'rotate(-' + degrees + 'deg)',
-
-            '-webkit-transition':'2s',
-            '-moz-transition':'2s',
-            '-ms-transition':'2s',
-            '-o-transition':'2s',
-            'transition':'2s',
-
-            '-webkit-transform-origin':'50% 50%',
-            '-moz-transform-origin':'50% 50%',
-            '-ms-transform-origin':'50% 50%',
-            '-o-transform-origin':'50% 50%',
-            'transform-origin':'50% 50%',
-            '-webkit-backface-visibility':'hidden'
-        });
-    }
-function doRotation(){
-rot_counter++;
-if (rot_counter > 1000){
-	rotate(0);
-	clearInterval(rot_interval);
-}
- if(degrees == 0){ rotate(0); degrees = 359; }
-
-        clearInterval(rot_interval);
-        rot_interval = setInterval(function(){
-            rotate(degrees);
-
-            degrees = (degrees === 359) ? 0 : 359;
-        }, 1500); // 30 min 
-
-}	
-var degrees = 359,rot_interval, rot_counter; 
 function start_stuff(){  
 	clearTimeout(my_timeout);
 
@@ -118,25 +78,9 @@ var the_div = document.getElementById('quest');
 		the_start_button.id='juansinho_start_btn';
 		the_start_button.innerHTML = '<span><span>Start</span></span>';
 		the_start_button.href='#';			
-		
-		var the_restart_button=document.createElement("a");		
-		the_restart_button.className= 'sexy_button_new green short';
-		the_restart_button.style.marginLeft='10px';		
-		the_restart_button.id='juansinho_restart_btn';
-		the_restart_button.innerHTML = '<span><span>Restart?</span></span>';
-		the_restart_button.href='#';				
+				
 		
 		
-		var the_guru_button=document.createElement("a");		
-		the_guru_button.className= 'sexy_button_new purple short';
-		the_guru_button.style.marginLeft='10px';	
-		the_guru_button.style.display='inline-block';
-		//the_guru_button.style.backgroundImage="url(http://cux.cu.funpic.de/mw/img/guru.png)";		
-		the_guru_button.id='juansinho_guru_btn';
-		the_guru_button.innerHTML = '<span><span>GuruSpecial</span></span>';
-		the_guru_button.href='#';					
-		the_area.id='juansinho_main';	   		
-		the_area.style.paddingLeft='10px';
 		
 		var the_area2=document.createElement("div");		
 		the_area2.id='juan_boss';	   		
@@ -149,37 +93,15 @@ var the_div = document.getElementById('quest');
 	   $(the_area2).insertAfter(the_area);
 	   
 	   
-	   $('#juansinho_close_btn').click(function(){$('#juansinho_main').remove();$('#juansinho_start_btn').remove();$('#juansinho_restart_btn').remove();$('#juansinho_guru_btn').remove();$('#juansinho_close_btn').remove();$('#juan_boss').remove();return false;});
+	   $('#juansinho_close_btn').click(function(){$('#juansinho_main').remove();$('#juansinho_start_btn').remove();$('#juansinho_close_btn').remove();$('#juan_boss').remove();return false;});
 	   
 	    $('#juansinho_start_btn').click(function(){$(this).hide();StartClicking();});
 		$('#juansinho_guru_btn').click(function(){$('#juansinho_start_btn').hide();$(this).hide();ClickEmAll();});
 		the_area.innerHTML=jca_title+' (v0.2 Beta)'
 		+'<br><br>Added:<span style="color:yellow">If you are in a hurry and want to collect all dat shit at once, click the GuruSpecial ;)</span>'
-			+'<table><tr><th>Jobs</th><td><input type="radio" name="jca_fam_collect" value="1"></td></tr>'
-			+'<tr><th>Arena</th><td><input type="radio" name="jca_fam_collect" value="2"></td></tr>'
-			+'<tr><th>Ices<br></th><td><input type="radio" name="jca_fam_collect" value="3">(Be clever and collect this only if you have collected all ArenaXP already)</td></tr>'
-			+'<tr><th>Properties</th><td><input type="radio" name="jca_fam_collect" value="4"></td></tr>'
-			+'<tr><th>Helper</th><td><input type="radio" name="jca_fam_collect" value="5"></td></tr>'
-			+'<tr><th>&nbsp;</th><td>&nbsp;</td></tr>'
-			+'<tr><th>Animation while waiting?</th><td><input type="checkbox" id="jca_fam_animate"></td></tr>'
+			+'<table><tr><th>Put in the FB-IDs you want to remove. Each one in one line.</th></tr>'
+			+'<tr><td><textarea id="jca_fam_animate" rows="10" cols="10"></textarea></td></tr>'
 			+'</table>';
-	    $('#juansinho_restart_btn').hide();
-		 $('#juansinho_restart_btn').click(function(){
-			document.getElementById('juan_boss').innerHTML ='';
-			document.getElementById('juansinho_main').innerHTML =jca_title+' (v0.2 Beta)'
-			+'<table><tr><th>Jobs</th><td><input type="radio" name="jca_fam_collect" value="1"></td></tr>'
-			+'<tr><th>Arena</th><td><input type="radio" name="jca_fam_collect" value="2"></td></tr>'
-			+'<tr><th>Ices<br></th><td><input type="radio" name="jca_fam_collect" value="3">(Be clever and collect this only if you have collected all ArenaXP already)</td></tr>'
-			+'<tr><th>Properties</th><td><input type="radio" name="jca_fam_collect" value="4"></td></tr>'
-			+'<tr><th>Helper</th><td><input type="radio" name="jca_fam_collect" value="5"></td></tr>'
-			+'<tr><th>&nbsp;</th><td>&nbsp;</td></tr>'
-			+'<tr><th>Animation while waiting?</th><td><input type="checkbox" id="jca_fam_animate"></td></tr>'
-			+'</table>';
-			 $(this).hide();
-			 log_arr = new Array();
-			 $('#juansinho_start_btn').show();
-			 ('#juansinho_guru_btn').show();
-		 });
    }
    else{
 	document.getElementById('juansinho_main').innerHTML="";
