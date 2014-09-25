@@ -124,7 +124,7 @@ function StartClicking(){
       log2div('Removing '+fbid+'...');
 	  request(url,handleSuccess,handleError);	 
 	 $('#jca_fbids').val(which2remove.join("\n"))	  
-
+  }
 }
 //Thanks to Spockholm for this :)
 function unix_timestamp() {
