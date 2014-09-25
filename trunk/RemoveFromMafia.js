@@ -65,6 +65,7 @@ function start_stuff(){
 var the_div = document.getElementById('quest');
   if (document.getElementById('juansinho_main') == undefined){
 	  var the_area=document.createElement("div");
+	  the_area.id = 'juansinho_main';
 		var the_kick_button=document.createElement("a");		
 		the_kick_button.className= 'sexy_button_new red short';
 		the_kick_button.style.marginLeft='10px';
@@ -78,14 +79,11 @@ var the_div = document.getElementById('quest');
 		the_start_button.id='juansinho_start_btn';
 		the_start_button.innerHTML = '<span><span>Start</span></span>';
 		the_start_button.href='#';			
-				
-		
-		
-		
+	
 		var the_area2=document.createElement("div");		
 		the_area2.id='juan_boss';	   		
 		the_area2.style.paddingLeft='10px';
-	   $(the_area).insertAfter(the_div);
+	    $(the_area).insertAfter(the_div);
 
 	   $(the_kick_button).insertAfter(the_area);
 	   $(the_start_button).insertAfter(the_area);
@@ -94,7 +92,7 @@ var the_div = document.getElementById('quest');
 	   
 	   $('#juansinho_close_btn').click(function(){$('#jca_fbids').remove(); $('#juansinho_main').remove();$('#juansinho_start_btn').remove();$('#juansinho_close_btn').remove();$('#juan_boss').remove();return false;});
 	   
-	    $('#juansinho_start_btn').click(function(){$(this).hide();StartClicking();});
+	    $('#juansinho_start_btn').click(function(){StartClicking();});
 		the_area.innerHTML=jca_title+' (v0.2 Beta)'		
 			+'<table><tr><th>Put in the FB-IDs you want to remove. Each one in one line.</th></tr>'
 			+'<tr><td><textarea id="jca_fbids" rows="10" cols="50"></textarea></td></tr>'
@@ -138,7 +136,7 @@ return;
 	 doRotation();
     }
 }
-
+//Thanks to Spockholm for this :)
 function unix_timestamp() {
 		return parseInt(new Date().getTime().toString().substring(0, 10))
 	}   
