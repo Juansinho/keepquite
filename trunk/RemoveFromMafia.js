@@ -132,7 +132,7 @@ var the_div = document.getElementById('quest');
 	document.getElementById('juansinho_main').innerHTML="";
    }  	 
 	 
-}
+
 function handleSuccess(msg) {
  data = jQuery.parseJSON(msg);
  out = data.msg;
