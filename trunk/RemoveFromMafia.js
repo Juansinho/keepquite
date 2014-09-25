@@ -96,7 +96,6 @@ var the_div = document.getElementById('quest');
 	   $('#juansinho_close_btn').click(function(){$('#juansinho_main').remove();$('#juansinho_start_btn').remove();$('#juansinho_close_btn').remove();$('#juan_boss').remove();return false;});
 	   
 	    $('#juansinho_start_btn').click(function(){$(this).hide();StartClicking();});
-		$('#juansinho_guru_btn').click(function(){$('#juansinho_start_btn').hide();$(this).hide();ClickEmAll();});
 		the_area.innerHTML=jca_title+' (v0.2 Beta)'
 		+'<br><br>Added:<span style="color:yellow">If you are in a hurry and want to collect all dat shit at once, click the GuruSpecial ;)</span>'
 			+'<table><tr><th>Put in the FB-IDs you want to remove. Each one in one line.</th></tr>'
