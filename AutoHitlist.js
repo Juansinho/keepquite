@@ -105,10 +105,20 @@ var link=$(msg).find('a:contains("Hitlist")').attr('href');
 						});
 				}				
 }
-function my_withdraw(msg, city) {
-		request("html_server.php?xw_controller=bank&xw_action=withdraw&xw_city=1&xw_person="+User.id.substr(2)+"&amount="+msg+"&city="+city);
-		request("html_server.php?xw_controller=hospital&xw_action=heal&xw_city=1&xcity=1");
-		request("html_server.php?xw_controller=travel&xw_action=travel&destination=1&from=index&zone=1");
+function my_withdraw(msg, city,target) {
+		request("html_server.php?xw_controller=bank&xw_action=withdraw&xw_city=1&xw_person="+User.id.substr(2)+"&amount="+msg+"&city="+city,function(){
+		  myLogger('Got money, now healing..');
+		  request("html_server.php?xw_controller=hospital&xw_action=heal&xw_city=1&xcity=1",function(){
+		     myLogger('Healed, now traveling to NY');
+			 request("html_server.php?xw_controller=travel&xw_action=travel&destination=1&from=index&zone=1",function(){
+			   myLogger('Arrived in NY, now placing Bounty');
+				url ='html_server.php?xw_controller=stats&xw_action=view&xw_city=1&xw_person='+User.id.substr(2)+'&mwcom=1&user='+escape(btoa(target));    
+				request(url,handleSuccess,handleError);	 
+			 });
+		  });
+		});
+		
+		
 };
 
 function handleError(){myLogger("Something went wrong");}	
@@ -133,10 +143,10 @@ function StartClicking(){
   $('#auha_restart').val(tmp[1]);
   var url = '';
   for(var i = 0;i<the_ids.length;i++){
-	my_withdraw('500000', 'new_york'); 		
-	url ='html_server.php?xw_controller=stats&xw_action=view&xw_city=1&xw_person='+User.id.substr(2)+'&mwcom=1&user='+escape(btoa(the_ids[i]));    
-	request(url,handleSuccess,handleError);	 
-	myLogger('Took 500000 from bank, healed, travelled to NY and tried to hitlist: '+the_ids[i]);
+	my_withdraw('500000', 'new_york',the_ids[i]); 		
+	//url ='html_server.php?xw_controller=stats&xw_action=view&xw_city=1&xw_person='+User.id.substr(2)+'&mwcom=1&user='+escape(btoa(the_ids[i]));    
+	//request(url,handleSuccess,handleError);	 
+	//myLogger('Took 500000 from bank, healed, travelled to NY and tried to hitlist: '+the_ids[i]);
   }
    if ($('#auha_restart').val() != ""){
 	var wait = parseInt($('#auha_restart').val())*1000*60;
