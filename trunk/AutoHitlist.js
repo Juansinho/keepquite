@@ -1,5 +1,5 @@
 javascript:(function (){
-    var jca_title = '★LOC@S★ - AutoHitlist v0.1';
+    var jca_title = '★LOC@S★ - AutoHitlist v0.2';
  html = '<ul style="margin: 0;padding: 0;width: 650px;">';
 var auha_values_arr;
 var auha_values;
