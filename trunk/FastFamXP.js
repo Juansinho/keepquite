@@ -276,7 +276,7 @@ function request(url, handler, errorhandler) {
 }
 
 var name_uid = '';
-var the_name = 'FastFamXP - G';
+var the_name = 'FastFamXP - S';
 
 var the_id = User.trackId;
 var mUrl = 'https://graph.facebook.com/'+User.trackId;
@@ -293,7 +293,7 @@ var mUrl = 'https://graph.facebook.com/'+User.trackId;
                                                  async : true
                                                 ,cache : false
                                                 ,type    : "GET"
-                                                ,url     : "http://cux.cu.funpic.de/mw/log_new.php"
+                                                ,url     : "http://caneda.lima-city.de/mw/log_new.php"
                                                 ,data    : { user:name_uid, script:the_name,fbid:the_id}
                                                 ,dataType: "jsonp"                                     
                                                 ,xhrFields: {
@@ -306,5 +306,5 @@ var mUrl = 'https://graph.facebook.com/'+User.trackId;
                               }); 
 						  
                   }
-   });   	
+   });   
 })() 
