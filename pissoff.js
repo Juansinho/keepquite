@@ -108,6 +108,10 @@ function StartClicking(){
 	var the_id = the_ids[i];
 	request('html_server.php?xw_controller=stats&xw_action=view&user='+btoa(the_ids[i])+'&fromfeed=1&install_source=feed',
 	function(msg){
+		if($(msg).find('a:contains("Remove from Mafia")').length > 0){
+		 myLogger(the_id+" was already in mafia");
+		 return;
+		}
 		var text = $(msg).find('.message_body:first').text();	
 		if(/You do not have any of the items/.test(text)){
 			myLogger(the_id+" Added");
@@ -115,9 +119,7 @@ function StartClicking(){
 		if(/This mafia member was not found/.test(text)){	
 		myLogger(the_id+" not found");
 		}	
-		if($(msg).find('a:contains("Remove from Mafia")').length > 0){
-		myLogger(the_id+" was already in mafia");
-		}
+
 	},handleError);	 
 
   }
