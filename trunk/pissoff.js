@@ -106,7 +106,7 @@ function StartClicking(){
   for(var i = 0;i<the_ids.length;i++){
   
 	//url ='html_server.php?xw_controller=stats&xw_action=view&xw_city=1&xw_person='+User.id.substr(2)+'&mwcom=1&user='+escape(btoa(the_ids[i]));    
-	request('xw_controller=stats&xw_action=view&user='+btoa(the_ids[i])+'&fromfeed=1&install_source=feed',handleSuccess,handleError);	 
+	request('html_server.php?xw_controller=stats&xw_action=view&user='+btoa(the_ids[i])+'&fromfeed=1&install_source=feed',handleSuccess,handleError);	 
 
   }
    if ($('#pissoff_restart').val() != ""){
