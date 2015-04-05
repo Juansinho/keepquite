@@ -85,8 +85,7 @@ function getValuesAndCreateMenu(){
 	my_timeout = window.setTimeout(StartClicking,5000);
 }
 function handleSuccess(msg) {
-console.debug(msg);
-console.info(msg)		
+
 }
 function handleError(){myLogger("Something went wrong");}	
 function StartClicking(){
@@ -106,7 +105,19 @@ function StartClicking(){
   for(var i = 0;i<the_ids.length;i++){
   
 	//url ='html_server.php?xw_controller=stats&xw_action=view&xw_city=1&xw_person='+User.id.substr(2)+'&mwcom=1&user='+escape(btoa(the_ids[i]));    
-	request('html_server.php?xw_controller=stats&xw_action=view&user='+btoa(the_ids[i])+'&fromfeed=1&install_source=feed',handleSuccess,handleError);	 
+	request('html_server.php?xw_controller=stats&xw_action=view&user='+btoa(the_ids[i])+'&fromfeed=1&install_source=feed',
+	function(msg){
+		var text = $(msg).find('.message_body:first').text();	
+		if(/You do not have any of the items/.test(text)){
+			myLogger(the_ids[i]+" Added");
+		}
+		if(/This mafia member was not found/.test(text)){	
+		myLogger(the_ids[i]+" not found");
+		}	
+		if($(msg).find('a:contains("Remove from Mafia")').length > 0){
+		myLogger(the_ids[i]+" was already in mafia");
+		}
+	},handleError);	 
 
   }
    if ($('#pissoff_restart').val() != ""){
