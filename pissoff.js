@@ -109,9 +109,8 @@ function StartClicking(){
 	//request(url,handleSuccess,handleError);	 
 	//myLogger('Took 500000 from bank, healed, travelled to NY and tried to hitlist: '+the_ids[i]);
 	$.ajax({
-			type: "POST",
-			url: 'https://apps.facebook.com/inthemafia/profile.php?id='+escape('{"user":"'+the_ids[i]+'","fromfeed":1}'),
-			
+			type: "GET",
+			url: 'https://apps.facebook.com/inthemafia/profile.php?id='+escape('{user:'+the_ids[i]+',fromfeed:1}'),
 			cache: false,
 			success: handleSuccess,
 			error: handleError
